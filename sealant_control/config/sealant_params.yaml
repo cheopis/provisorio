@@ -1,0 +1,28 @@
+# Parâmetros de configuração do sistema de detecção de gaps
+type: 'sig' #'exp' 
+
+# Geometric Constant (depends on the aplicator) Pa.s
+K: 0.001
+# Aplied pressure MPa
+delta_P: 0.4e6
+
+exp:
+  # initial viscosisty
+  n0: 150
+
+  # coeficiente de crescimento da viscosidade ao longo do tempo. s⁻1
+  beta: 3e-2
+
+sigmoid:
+  # initial viscosity P
+  n0: 150
+
+  #
+  n_max: 1e4
+
+  # inflexion point s (max time for sealing)
+  t_max: 360
+
+  # curing constant 1/min
+  k: 0.3
+

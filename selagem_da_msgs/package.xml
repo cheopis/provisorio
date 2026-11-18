@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<package format="2">
+  <!-- =========================================================================== -->
+  <!-- PACOTE selagem_da_msgs - Mensagens customizadas para o projeto SELAGEM-DA -->
+  <!-- =========================================================================== -->
+  
+  <name>selagem_da_msgs</name>
+  <version>1.0.0</version>
+  <description>
+    Mensagens, serviços e ações customizadas para o sistema SELAGEM-DA
+    de selagem aeronáutica automatizada.
+  </description>
+  
+  <maintainer email="ariel.ferraz@ita.br">Ariéle Ferraz</maintainer>
+  <maintainer email="emilia.villani@ita.br">Emília Villani</maintainer>
+  <maintainer email="caroline.silva@ita.br">Caroline Silva</maintainer>
+  
+  <license>Apache 2.0</license>
+  
+  <author email="arielet.ferraz@gmail.com">Ariéle Ferraz</author>
+  
+  <url type="website">https://github.com/cheopis/selagem-da</url>
+  
+  <!-- =========================================================================== -->
+  <!-- DEPENDÊNCIAS -->
+  <!-- =========================================================================== -->
+  
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <!-- Dependências para geração de mensagens -->
+  <build_depend>message_generation</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>actionlib_msgs</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  
+  <!-- Dependências de execução -->
+  <exec_depend>message_runtime</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>actionlib_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  
+  <!-- =========================================================================== -->
+  <!-- EXPORTAÇÃO -->
+  <!-- =========================================================================== -->
+  
+  <export>
+    <!-- Não é metapackage! -->
+    <architecture_independent/>
+  </export>
+  
+</package>
