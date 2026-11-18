@@ -1,0 +1,26 @@
+# Parâmetros de configuração para a movimentação do robô
+
+move_robot:
+  # Velocidade 'nominal' para a selagem em m/s
+  nominal_velocity: 0.1
+  nominal_distance: 0.27
+
+  # Velocidades em m/s
+  vel_x: 0.0
+  vel_y: -0.50
+  theta: 0.0
+
+  # Parâmetros de correção PI em x
+  P_x: 0.1
+  I_x: 0.0
+
+  # Parametros selagem
+  vazao_nominal: 0.3
+
+  # Tópicos
+  input_topic: "/gap_detection"            # Tópico da detecção de gaps
+  output_topic_prefix: "/gap_detection"
+  
+  # Debug
+  enable_debug_logging: false
+  debug_save_interval: 0              # 0 = não salvar, N = salvar a cada N frames

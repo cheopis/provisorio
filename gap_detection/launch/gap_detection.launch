@@ -1,0 +1,36 @@
+<launch>
+  <!-- Node de detecção de gaps para selagem aeronáutica -->
+  
+  <arg name="config_file" 
+       default="$(find gap_detection)/config/gap_detection_params.yaml" />
+  
+  <!-- Carregar parâmetros -->
+  <rosparam command="load" file="$(arg config_file)" />
+  
+  <!-- Node principal -->
+  <node name="gap_detection_node" 
+        pkg="gap_detection" 
+        type="gap_detection_node.py" 
+        output="screen"
+        respawn="true"
+        respawn_delay="2">
+    
+    <!-- Tópico do sensor folha de luz -->
+    <param name="pointcloud_topic" value="/pointcloud" />
+    
+    <!-- Parâmetros do gap aeronáutico -->
+    <param name="nominal_gap" value="0.003" /> <!-- 3mm -->
+    <param name="gap_tolerance" value="0.001" /> <!-- ±1mm -->
+    
+    <!-- Modo de detecção: standard, discontinuous, adaptive -->
+    <param name="detection_mode" value="standard" />
+    
+    <!-- Habilitar inicialmente -->
+    <param name="enabled" value="true" />
+    
+    <!-- Taxa de publicação (Hz) -->
+    <param name="publish_rate" value="30" />
+    
+  </node>
+  
+</launch>

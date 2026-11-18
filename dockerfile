@@ -1,0 +1,22 @@
+# Source - https://stackoverflow.com/a
+# Posted by fallino, modified by community. See post 'Timeline' for change history
+# Retrieved 2025-12-04, License - CC BY-SA 4.0
+
+FROM ros:noetic-ros-core
+
+WORKDIR /catkin_ws
+
+COPY . /catkin_ws/src/iafa_sealing
+
+RUN apt-get update && apt-get install -y python3-pip && python3 -m pip install scipy
+
+RUN apt-get update && apt-get install -y \
+    python3-colcon-common-extensions \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/* 
+
+SHELL ["/bin/bash", "-c"]
+RUN source /opt/ros/noetic/setup.bash && catkin_make
+RUN echo "source /catkin_ws/devel/setup.bash" >> ~/.bashrc
+
+CMD ["bash"]

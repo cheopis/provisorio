@@ -1,0 +1,19 @@
+2. detealhar melhor a seção 2 e 
+3. descrever melhor o problema
+4. incluir arquitetura
+    incluir o controle
+    explicar melhor e detalhar melhor acélula
+    incluir m gráfico da diferença do gap
+    área variável
+    incluir gráfico da variação de velocidade
+    como o robô lida com descontinuidades
+    Retirar o máximo de referência para selante, trocar por dispensing tool
+    borrar a pistola
+    decreve o ques está sendo implementado no docker e falar que a ideia é migrar para microsserviçoes
+
+5. inserir seção de acknowledge
+
+6. tempo de execução
+    
+    diferença de valores entre a simulação
+        sensor e velocidades

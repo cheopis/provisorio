@@ -1,0 +1,35 @@
+# Parâmetros de configuração do sistema de detecção de gaps
+
+gap_detection:
+  # Parâmetros do gap aeronáutico
+  nominal_gap: 0.003          # 3mm em metros (padrão aeronáutico)
+  gap_tolerance: 0.002        # ±1mm tolerância
+  min_gap_width: 0.001        # 1mm mínimo aceitável
+  max_gap_width: 0.005        # 5mm máximo aceitável
+  
+  # Detecção de descontinuidades
+  discontinuity_threshold: 0.002      # 2mm para detecção de mudança brusca
+  min_discontinuity_length: 0.020     # 20mm comprimento mínimo
+  
+  # Processamento de sinal
+  smoothing_sigma: 2.0                # Suavização gaussiana
+  edge_detection_sensitivity: 0.0005  # 0.5mm sensibilidade para bordas
+  
+  # Filtros
+  apply_outlier_filter: false
+  outlier_std_dev: 3.0                # Remover pontos além de 3σ
+  
+  # Performance
+  min_points_for_detection: 600        # Mínimo de pontos para processar
+  max_history_size: 100               # Tamanho máximo do histórico
+  
+  # Modos de operação
+  detection_mode: "standard"          # standard, discontinuous, adaptive
+  
+  # Tópicos
+  input_topic: "/pointcloud"          # Tópico do sensor folha de luz
+  output_topic_prefix: "/gap_detection"
+  
+  # Debug
+  enable_debug_logging: false
+  debug_save_interval: 0              # 0 = não salvar, N = salvar a cada N frames

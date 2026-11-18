@@ -1,0 +1,3 @@
+interpolation_steps: 120
+publish_rate_hz: 25
+# Optional: could include damping and tolerance for the IK here too

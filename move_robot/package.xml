@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>move_robot</name>
+  <version>1.0.0</version>
+  <description>
+    Controle de velocidades do robô de base móvel de modo a mantê-lo a uma distância fixa da fuselagem a ser selada
+    </description>
+
+  <maintainer email="arielet.ferraz@gmail.com">Ariéle Ferraz</maintainer>
+  <license>Apache 2.0</license>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+
+ <!-- Dependências de build -->
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>message_generation</build_depend>
+  <build_depend>sealant_control</build_depend>
+  
+  <!-- Dependências de execução -->
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
+  <exec_depend>sealant_control</exec_depend>
+</package>

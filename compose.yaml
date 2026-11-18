@@ -1,0 +1,66 @@
+# version: '3.8'
+services:
+  ros-master:
+    image: ros:noetic-ros-core
+    container_name: ros-master
+    command: roscore
+    environment:
+      - "ROS_IP=172.25.0.100"
+    networks:
+      ros_net:
+        ipv4_address: 172.25.0.100
+    healthcheck:
+      test: ["CMD", "bash", "-c", "source opt/ros/noetic/setup.bash && rostopic list | grep -q /rosout"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  ros-gap-detection:
+    #image: ros:noetic-ros-core
+    build: ./gap_detection
+    container_name: gap_detection
+    environment:
+      - ROS_MASTER_URI=http://172.25.0.100:11311
+      - "ROS_IP=172.25.0.101"
+    depends_on:
+      ros-master:
+        condition: service_healthy
+    command: bash -c "source /catkin_ws/devel/setup.bash && python3 /catkin_ws/src/gap_detection/node/gap_detection_node.py"
+    networks:
+      ros_net:
+        ipv4_address: 172.25.0.101
+    volumes:
+      - gap_devel:/catkin_ws/devel          
+
+  ros-move-robot:
+    #image: ros:noetic-ros-core
+    build: ./move_robot
+    container_name: move_robot
+    environment:
+      - ROS_MASTER_URI=http://172.25.0.100:11311
+      - "ROS_IP=172.25.0.102"
+    depends_on:
+      ros-master:
+        condition: service_healthy
+      ros-gap-detection:
+        condition: service_started
+    command: bash -c "source /catkin_ws/devel/setup.bash && source /gap_ws/devel/setup.bash && python3 /catkin_ws/src/move_robot/node/move_robot_node.py"
+    networks:
+      ros_net:
+        ipv4_address: 172.25.0.102
+    volumes:
+      - move_devel:/catkin_ws/devel          
+      - gap_devel:/gap_ws/devel 
+
+networks:
+  ros_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.25.0.0/24
+        gateway: 172.25.0.1
+
+volumes:
+  gap_devel:
+  move_devel:
